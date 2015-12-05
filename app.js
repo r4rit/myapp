@@ -6,28 +6,26 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-var data={count:0};
-
 app.get('/', function (req, res) {
-  data.count++;
-  res.render('DB_ejs', data);
+  res.render('DB_main_guest');
 });
 
-app.get('/reset', function (req, res) {
-  data.count=0;
-  res.render('DB_ejs', data);
+app.get('/resistration', function (req, res) {
+  res.render('DB_resistration');
 });
 
-
-app.get('/set/count', function (req, res) {
-  if(req.query.count) data.count=req.query.count;
-  res.render('DB_ejs', data);
+app.get('/main_admin', function (req, res) {
+  res.render('DB_main_admin');
 });
 
-app.get('/set/:num', function (req, res) {
-  data.count=req.params.num;
-  res.render('DB_ejs', data);
+app.get('/main_valuer', function (req, res) {
+  res.render('DB_main_valuer');
 });
+
+app.get('/main_presenter', function (req, res) {
+  res.render('DB_main_presenter');
+});
+
 
 app.listen(3000, function() {
   console.log('Server On!');
